@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  Card view demo
+</mat-toolbar>
+<div class="content">
+    <!-- <div fxLayout="row wrap" fxLayoutGap="16px">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let repo of data">
+        <mat-card class="mat-elevation-z4">
+          <mat-card-header>
+            <mat-card-subtitle>{{repo.owner.login}}</mat-card-subtitle>
+            <mat-card-title>{{repo.name}}</mat-card-title>
+          </mat-card-header>
+          <a target="_blank" [href]="repo.html_url">
+              <img mat-card-image [src]="repo.owner.avatar_url" width="300" height="200">
+          </a>
+          <mat-card-content>
+            <p>
+              The Himalayas is a mountain range in Asia.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>watchers: {{repo.watchers}}</button>
+            <button mat-button>forks: {{repo.forks}}</button>
+            <button mat-button>open_issues: {{repo.open_issues}}</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div> -->
+    
+    <div class="container overflow-hidden">
+        <div class="row gy-5">
+          <div class="col" *ngFor="let repo of items">
+            <div class="card" style="width: 18rem;">
+                <a (click)="openModal(repo)">
+                  <img [src]="repo.owner.avatar_url" class="card-img-top">
+                </a>
+                <div class="card-body">
+                <h2 class="card-title">{{repo.name}}</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-primary">watchers: {{repo.watchers}}</button>
+                    <button type="button" class="btn btn-primary">forks: {{repo.forks}}</button>
+                    <button type="button" class="btn btn-primary">issues: {{repo.open_issues}}</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="data.length"></ngb-pagination> //-->
+        <pagination [totalItems]="items.length" (pageChanged)="pageChanged($event)"></pagination>
+    </div>
+  </div>
+</div>
